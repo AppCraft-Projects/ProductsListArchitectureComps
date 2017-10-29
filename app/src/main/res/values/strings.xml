@@ -3,8 +3,12 @@
     <!-- Common strings -->
     <string name="app_name">ArchCompsProductDemo</string>
 
-    <!-- Products -->
+    <!-- Loading -->
     <string name="products_loading">Loading products...</string>
+
+    <!-- Content Description -->
     <string name="cd_products_list">Products list</string>
+    <string name="cd_product_name">Product name</string>
+    <string name="cd_product_thumnail_url">Product name</string>
 
 </resources>

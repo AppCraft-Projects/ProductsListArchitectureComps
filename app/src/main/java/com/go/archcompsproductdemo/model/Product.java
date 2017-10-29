@@ -11,7 +11,7 @@ public class Product {
 
     @SerializedName("name")
     @Expose
-    private String title;
+    private String name;
 
     @SerializedName("thumbnailUrl")
     @Expose
@@ -25,12 +25,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getThumbnailUrl() {

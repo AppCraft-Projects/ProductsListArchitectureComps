@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="product"
+            type="com.go.archcompsproductdemo.model.Product"/>
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/product_item_min_height"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/item_horizontal_margin"
+        android:layout_marginEnd="@dimen/item_horizontal_margin"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_marginStart="@dimen/item_horizontal_margin"
+            android:layout_marginEnd="@dimen/item_horizontal_margin"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cd_product_name"
+                android:text="@{product.name}"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/cd_product_thumnail_url"
+                android:text="@{product.thumbnailUrl}"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</layout>
