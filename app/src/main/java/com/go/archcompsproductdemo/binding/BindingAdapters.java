@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.go.archcompsproductdemo.ui;
+package com.go.archcompsproductdemo.binding;
 
 import android.databinding.BindingAdapter;
 import android.view.View;
