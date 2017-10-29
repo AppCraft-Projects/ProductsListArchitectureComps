@@ -5,39 +5,39 @@ import com.google.gson.annotations.SerializedName;
 
 public class Product {
 
-    @SerializedName("id")
+    @SerializedName("mId")
     @Expose
-    private Integer id;
+    private Integer mId;
 
-    @SerializedName("name")
+    @SerializedName("mName")
     @Expose
-    private String name;
+    private String mName;
 
-    @SerializedName("thumbnailUrl")
+    @SerializedName("mThumbnailUrl")
     @Expose
-    private String thumbnailUrl;
+    private String mThumbnailUrl;
 
     public Integer getId() {
-        return id;
+        return mId;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.mId = id;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
     public String getThumbnailUrl() {
-        return thumbnailUrl;
+        return mThumbnailUrl;
     }
 
     public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
+        this.mThumbnailUrl = thumbnailUrl;
     }
 }

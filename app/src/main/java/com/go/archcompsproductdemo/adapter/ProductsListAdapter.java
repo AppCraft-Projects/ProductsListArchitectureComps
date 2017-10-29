@@ -13,10 +13,10 @@ import java.util.List;
 
 public class ProductsListAdapter extends RecyclerView.Adapter<ProductsListAdapter.ProductViewHolder> {
 
-    private List<Product> productList;
+    private List<Product> mProductList;
 
     public void setProductList(List<Product> productList) {
-        this.productList = productList;
+        this.mProductList = productList;
     }
 
     @Override public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,12 +27,12 @@ public class ProductsListAdapter extends RecyclerView.Adapter<ProductsListAdapte
     }
 
     @Override public void onBindViewHolder(ProductViewHolder holder, int position) {
-        holder.binding.setProduct(productList.get(position));
+        holder.binding.setProduct(mProductList.get(position));
         holder.binding.executePendingBindings();
     }
 
     @Override public int getItemCount() {
-        return productList.size();
+        return mProductList.size();
     }
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
