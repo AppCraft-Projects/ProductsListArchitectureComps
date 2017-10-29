@@ -5,15 +5,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class Product {
 
-    @SerializedName("mId")
+    @SerializedName("id")
     @Expose
     private Integer mId;
 
-    @SerializedName("mName")
+    @SerializedName("name")
     @Expose
     private String mName;
 
-    @SerializedName("mThumbnailUrl")
+    @SerializedName("thumbnailUrl")
     @Expose
     private String mThumbnailUrl;
 

@@ -4,21 +4,26 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 
 import com.go.archcompsproductdemo.model.Product;
+import com.go.archcompsproductdemo.service.AsyncCallback;
+import com.go.archcompsproductdemo.service.NetworkService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsListViewModel extends AndroidViewModel {
+public class ProductsListViewModel extends AndroidViewModel implements AsyncCallback {
 
     private MutableLiveData<List<Product>> mProducts;
+    private NetworkService mNetworkService;
 
     public ProductsListViewModel(@NonNull Application application) {
         super(application);
         mProducts = new MutableLiveData<>();
+
+        mNetworkService = new NetworkService();
+        mNetworkService.registerCallback(this);
     }
 
     public LiveData<List<Product>> getProducts() {
@@ -29,45 +34,18 @@ public class ProductsListViewModel extends AndroidViewModel {
     }
 
     private void loadProducts() {
-        new MockProductsListGeneratorTask().execute(10);
+        mNetworkService.getProducts();
     }
 
-    private class MockProductsListGeneratorTask extends AsyncTask<Integer, Void, List<Product>> {
-
-        @Override protected List<Product> doInBackground(Integer... counters) {
-            doDelay();
-            return generateMockProductList(counters[0]);
+    @Override public void onSuccess(List<Product> productsListResults) {
+        if(productsListResults != null) {
+            mProducts.setValue(productsListResults);
+        } else {
+            mProducts.setValue(new ArrayList<Product>());
         }
+    }
 
-        @Override protected void onPostExecute(List<Product> results) {
-            super.onPostExecute(results);
-
-            if(results != null) {
-                mProducts.setValue(results);
-            } else {
-                mProducts.setValue(new ArrayList<Product>());
-            }
-        }
-
-        private List<Product> generateMockProductList(final int maxCount) {
-            List<Product> productList = new ArrayList<>();
-
-            for (int i = 0; i < maxCount; i++) {
-                Product newProduct = new Product();
-                newProduct.setId(i);
-                newProduct.setName("Product " + i);
-                newProduct.setThumbnailUrl("https://i.ebayimg.com/images/g/A8MAAOSwHaBWkDkk/s-l200.jpg");
-
-                productList.add(newProduct);
-            }
-
-            return productList;
-        }
-
-        private void doDelay() {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException ignored) {}
-        }
+    @Override public void onFault(String errorMsg) {
+        // TODO
     }
 }
