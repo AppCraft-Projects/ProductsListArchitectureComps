@@ -5,5 +5,6 @@
 
     <!-- Products -->
     <string name="products_loading">Loading products...</string>
+    <string name="cd_products_list">Products list</string>
 
 </resources>
